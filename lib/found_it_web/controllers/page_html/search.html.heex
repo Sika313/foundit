@@ -7,14 +7,14 @@
 </nav>
 <nav class="flex flex-row w-[10vw] justify-around text-2xl">
 <a href="/login">Login</a>
-<a href="/signup">Signup</a>
+<a href="/edit_item">Edit item</a>
 </nav>
 </div>
  
 <h1 class="my-10 text-4xl text-orange-800 text-center">Search lost item</h1>
 <div class="flex flex-row h-sreen justify-center pt-10">
 <img src="/images/search.jpg" class="w-[30vw] h-[50vh] cover mr-4" />
-<form class="flex flex-col w-[40vw] rounded-md border-1 border-orange-400">
+<form action="/search_item" method="post" class="flex flex-col w-[40vw] rounded-md border-1 border-orange-400">
 
 <label for="category">Category</label>
 <select id="category" name="category" class="mb-6">
@@ -26,18 +26,6 @@
 <option value="document">Document</option>
 <option value="other">Other</option>
 </select>
-
-<label for="location">Go to google map and copy and paste the location the item was last seen</label>
-<input id="location" type="text" name="location" placeholder="Paste google map location URL" class="mb-6" />
-
-<label for="image">Optianally update item image</label>
-<input id="image" type="file" name="image" class="mb-6" />
-
-<label for="description">Item description</label>
-<textarea id="description" rows="4" cols="4" class="mb-4">
-
-</textarea>
-
 
 <button type="submit" href="/search_lost" class="bg-green-600 text-white text-md hover:bg-green-400 transition-colors p-4 mr-6 w-[20%]">Search lost item</button>
 </form>

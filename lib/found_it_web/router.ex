@@ -6,7 +6,7 @@ defmodule FoundItWeb.Router do
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, html: {FoundItWeb.Layouts, :root}
-    plug :protect_from_forgery
+#    plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
 
@@ -20,9 +20,14 @@ defmodule FoundItWeb.Router do
     get "/", PageController, :home
     get "/login", PageController, :login
     get "/signup", PageController, :signup
-    get "/search_lost", PageController, :search
-    post "/search_lost", PageController, :handle_search
+    get "/edit_item", PageController, :edit_item
+    post "/edit_item", PageController, :handle_edit_item
+    post "/update_item_info", PageController, :update_item_info
+    get "/search_item", PageController, :search
+    post "/search_item", PageController, :handle_search
     get "/found_item", PageController, :found
+    post "/add_found_item", PageController, :handle_found
+
   end
 
   # Other scopes may use custom stacks.
