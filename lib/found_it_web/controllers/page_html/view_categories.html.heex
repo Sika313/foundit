@@ -1,0 +1,8 @@
+<h1 class="text-2xl text-rose-800 my-6 text-center"> View categories </h1>
+
+<ul class="flex flex-col items-center">
+<%= for i <- @categories do %>
+  <li class="w-20vw py-4 px-10 shadow-md mb-4"> <%= i.name %> </li>
+<% end %>
+
+</ul>

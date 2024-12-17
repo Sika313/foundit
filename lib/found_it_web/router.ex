@@ -19,6 +19,7 @@ defmodule FoundItWeb.Router do
 
     get "/", PageController, :home
     get "/login", PageController, :login
+    post "/handle_login", PageController, :handle_login
     get "/signup", PageController, :signup
     get "/edit_item", PageController, :edit_item
     post "/edit_item", PageController, :handle_edit_item
@@ -27,6 +28,15 @@ defmodule FoundItWeb.Router do
     post "/search_item", PageController, :handle_search
     get "/found_item", PageController, :found
     post "/add_found_item", PageController, :handle_found
+
+    get "/admin/view_all", PageController, :view_all
+    get "/admin/view_claimed", PageController, :view_claimed
+    get "/admin/view_not_claimed", PageController, :view_not_claimed
+    get "/admin/view_categories", PageController, :view_categories
+    get "/admin/add_category", PageController, :add_category
+    post "/admin/add_category", PageController, :handle_add_category
+    get "/admin/add_user", PageController, :add_user
+    post "/admin/add_user", PageController, :handle_add_user
 
   end
 

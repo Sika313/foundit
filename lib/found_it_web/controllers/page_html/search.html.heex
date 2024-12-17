@@ -18,13 +18,9 @@
 
 <label for="category">Category</label>
 <select id="category" name="category" class="mb-6">
-<option value="phone">Phone</option>
-<option value="laptop">Laptop</option>
-<option value="Accessory">Accessory</option>
-<option value="jewery">Jewery</option>
-<option value="bag">Bag</option>
-<option value="document">Document</option>
-<option value="other">Other</option>
+<%= for category <- @categories do %>
+<option value={category.name}><%= category.name %></option>
+<% end %>
 </select>
 
 <button type="submit" href="/search_lost" class="bg-green-600 text-white text-md hover:bg-green-400 transition-colors p-4 mr-6 w-[20%]">Search lost item</button>

@@ -1,0 +1,23 @@
+<h1 class="text-2xl text-center text-red-700"> Add user </h1>
+
+<div class="flex flex-row justify-center items-center h-screen">
+
+<form method="post" action="/admin/add_user" class="flex flex-col w-[20vw] h-[40vh] justify-around">
+  <label for="fname">First Name:</label>
+  <input type="text" id="fname" name="fname" />
+  <label for="lname">Last Name:</label>
+  <input type="text" id="lname" name="lname" />
+   <label for="phone">Phone number:</label>
+  <input type="text" id="phone" name="phone" />
+  <select name="role">
+    <%= for role <- @roles do %>
+      <option value={role.name}> <%= role.name %> </option>
+    <% end %>
+  </select>
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password" />
+  
+  <button class="bg-blue-500 py-2 px-4 text-white rounded-md mt-4">Add</button>
+</form>
+
+</div>

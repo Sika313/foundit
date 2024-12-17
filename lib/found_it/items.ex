@@ -10,15 +10,43 @@ defmodule FoundIt.Items do
 
   def search_by_category(category) do
     IO.inspect(category, label: "CATEGORY--->")
-    query = from p in Item, where: p.category == ^category.category
+    query = from p in Item, where: p.category == ^category.category and p.status == false 
     case Repo.all(query) do
-      result -> {:ok, result}
+      results -> 
+        {:ok, results}
       [] -> {:error}
     end
   end
 
+  def structs_to_maps(result) do
+    r = 
+    result
+    |> Enum.map( fn i -> Map.from_struct(i) end )
+    |> IO.inspect(label: "TEST--->")
+    |> Map.pop(:__meta__)
+    r
+  end
 
-  
+  def lost_items do
+    query = from i in Item, where: i.lost_or_found == "lost"
+    Repo.all(query)
+  end
+
+  def found_items() do
+    query = from i in Item, where: i.lost_or_found == "found" 
+    Repo.all(query)
+  end
+
+  def found_items_claimed() do
+    query = from i in Item, where: i.status == true 
+    Repo.all(query)
+  end
+
+  def found_items_not_claimed() do
+    query = from i in Item, where: i.status == false 
+    Repo.all(query)
+  end
+
   @doc """
   Returns the list of lost_or_found.
 
