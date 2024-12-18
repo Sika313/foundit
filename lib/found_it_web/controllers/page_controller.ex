@@ -16,6 +16,9 @@ defmodule FoundItWeb.PageController do
     render(conn, :home, layout: false)
   end
 
+  def contact_us(conn, _params) do
+    render(conn, :contact_us)
+  end
   def login(conn, _params) do
     render(conn, :login)
   end

@@ -18,6 +18,7 @@ defmodule FoundItWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/contact_us", PageController, :contact_us
     get "/login", PageController, :login
     get "/about_us", PageController, :about_us
     post "/handle_login", PageController, :handle_login
