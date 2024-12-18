@@ -1,0 +1,24 @@
+<h1 class="text-2xl text-red-500 text-center my-10">Users</h1>
+
+<div class="flex flex-row justify-center mb-4">
+<table class="w-[40vw] border-2 border-gray-400">
+<tr class="font-bold">
+  <td> First name </td>
+  <td> Last name </td>
+  <td> Password  </td>
+  <td> Phone number </td>
+  <td> role </td>
+</tr>
+
+<%= for user <- @users do %>
+  <tr class="border-2 border-gray-400">
+    <td> <%= user.fname %> </td>
+    <td> <%= user.lname %> </td>
+    <td> <%= user.password %> </td>
+    <td> <%= user.phone %> </td>
+    <td> <%= user.role %> </td>
+  </tr>
+<% end %>
+
+</table>
+</div>

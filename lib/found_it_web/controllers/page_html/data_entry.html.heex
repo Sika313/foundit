@@ -1,0 +1,36 @@
+<h1 class="mt-4">
+Logged in as: <b> <%= @user.fname %> <%= @user.lname %> </b>
+</h1>
+
+<h1 class="my-10 text-4xl text-orange-800 text-center">Register found item</h1>
+<div class="flex flex-row h-sreen justify-center pt-10">
+<img src="/images/search.jpg" class="w-[30vw] h-[50vh] cover mr-4" />
+<form action="/add_found_item" method="post"  class="flex flex-col w-[40vw] rounded-md border-1 border-orange-400">
+
+<label for="category">Category</label>
+<select id="category" name="category" class="mb-6">
+<%= for category <- @categories do %>
+<option value={category.name}><%= category.name %></option>
+<% end %>
+</select>
+
+
+<label for="location">Go to google map and copy and paste the location where item was found</label>
+<input id="location" type="text" name="location" placeholder="Paste google map location URL" class="mb-6" />
+
+
+<label for="phone">Add your phone number</label>
+<input id="phone" type="text" name="phone" placeholder="Phone number" class="mb-6" />
+
+<label for="image" class="text-rose-800">Optianally, update item image</label>
+<input id="image" type="file"  name="image" class="mb-6" />
+
+<label for="description">Item description</label>
+<input id="description" type="text" name="description" class="mb-4" />
+
+
+
+<button type="submit" class="bg-green-600 text-white text-md hover:bg-green-400 transition-colors p-4 mr-6 w-[20%]">Add item</button>
+</form>
+
+</div>

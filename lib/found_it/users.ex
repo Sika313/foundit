@@ -17,6 +17,11 @@ defmodule FoundIt.Users do
     end
   end
 
+  def get_data_entry() do
+    query = from i in User, where: i.role == "DATA ENTRY"
+    Repo.all(query)
+  end
+
   @doc """
   Returns the list of users.
 

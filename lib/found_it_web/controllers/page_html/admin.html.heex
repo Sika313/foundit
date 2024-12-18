@@ -9,18 +9,49 @@
 <a href="/admin/view_not_claimed" class="self-start bg-blue-600 mb-4 py-2 px-4">View items not claimed</a>
 <a href="/admin/view_categories" class="self-start bg-blue-600 mb-4 py-2 px-4">View categories</a>
 <a href="/admin/add_category" class="self-start bg-blue-600 mb-4 py-2 px-4">Add category</a>
-<a href="/admin/add_user" class="self-start bg-blue-600 py-2 px-4">Add user</a>
+<a href="/admin/view_users" class="self-start bg-blue-600 mb-4 py-2 px-4">View users</a>
+<a href="/admin/add_user" class="self-start bg-blue-600 mb-4 py-2 px-4">Add user</a>
+<a href="/" class="self-start bg-blue-600 py-2 px-4">Logout</a>
 </div>
 
-<div class="flex flex-col ml-4 pt-4">
+<div class="flex flex-col">
+
+<div class="flex flex-row">
+
+<div class="flex flex-col w-[25vw] h-[40vh] items-center p-4 shadow-md">
+<img src="/images/reported.jpg" alt="FoundIt img" class="w-60 h-60 rounded-full" />
 <p>Total items reported lost</p>
 <p class="font-bold mb-4 text-center"> <%= @total_items %> </p>
 
+</div>
+
+<div class="flex flex-col w-[25vw] h-[40vh] items-center p-4 shadow-md">
+<img src="/images/claimed.jpg" alt="FoundIt img" class="w-60 h-60 rounded-full" />
 <p>Total items claimed</p>
 <p class="font-bold mb-4 text-center"> <%= @total_items_claimed %> </p>
 
+</div>
+
+<div class="flex flex-col w-[25vw] h-[40vh] items-center p-4 shadow-md">
+<img src="/images/unclaimed.jpg" alt="FoundIt img" class="w-60 h-60 rounded-full" />
 <p>Total items not claimed</p>
 <p class="font-bold mb-4 text-center"> <%= @total_items_not_claimed %> </p>
+
+</div>
+
+
+</div>
+
+<div class="flex flex-row mt-4">
+
+<div class="flex flex-col w-[25vw] h-[40vh] items-center p-4 shadow-md">
+<img src="/images/data_entry.jpg" alt="FoundIt img" class="w-60 h-60 rounded-full" />
+<p>Total data entry technicians</p>
+<p class="font-bold mb-4 text-center"> <%= @total_data_entry %> </p>
+
+</div>
+
+</div>
 
 </div>
 
