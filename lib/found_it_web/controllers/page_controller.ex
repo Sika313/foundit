@@ -24,21 +24,44 @@ defmodule FoundItWeb.PageController do
     case Users.get_user_by_phone_and_password(params) do
       {:ok, result} ->
         user =  Map.from_struct(result) |> IO.inspect() |>  Map.delete(:__meta__) 
-        IO.inspect(user, label: "USER--->")
+        to_render = case user.role do
+          "ADMIN" -> :admin
+          "DATA ENTRY" -> :data_entry
+        end
         total_items = Items.list_lost_or_found() |> Enum.count()
         total_items_claimed = Items.found_items_claimed() |> Enum.count()
         total_items_not_claimed = Items.found_items_not_claimed() |> Enum.count()
+        total_data_entry = Users.get_data_entry() |> Enum.count()
+
+    categories = Category.list_category() |> Enum.map(fn i -> Map.from_struct(i) end) |> Enum.map(fn i -> Map.delete(i, :__meta__) end )
         conn
         |> assign(:user, user)
+        |> assign(:categories, categories)
+        |> assign(:total_data_entry, total_data_entry)
         |> assign(:total_items, total_items)
         |> assign(:total_items_claimed, total_items_claimed)
         |> assign(:total_items_not_claimed, total_items_not_claimed)
-        |> render(:admin)
+        |> render(to_render)
       {:not_found} ->
         conn
         |> put_flash(:error, "INVALID CREDENTIALS.")
         |> render(:login)
     end
+  end
+
+
+  def about_us(conn, _params) do
+    render(conn, :about_us)
+  end
+
+  def view_users(conn, _params) do
+    users = Users.list_users()
+    |> Enum.map(fn i -> Map.from_struct(i) end)
+    |> Enum.map(fn i -> Map.delete(i, :__meta__) end)
+    IO.inspect(users)
+    conn
+    |> assign(:users, users)
+    |> render(:admin_view_users)
   end
 
   def view_all(conn, _params) do
@@ -151,7 +174,7 @@ defmodule FoundItWeb.PageController do
         |> render(:edit_item_result)
       {:not_found} ->
         conn
-        |> put_flash(:error, "ITEM NOT FOUND, CONTACT 0779567086 FOR HELP.")
+        |> put_flash(:error, "ITEM NOT FOUND, CONTACT 0975749165 FOR HELP.")
         |> render(:edit)
     end
   end
